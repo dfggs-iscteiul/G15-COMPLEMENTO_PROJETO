@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: covid_graph_spread.covid_graph_spread.AppTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.965 sec

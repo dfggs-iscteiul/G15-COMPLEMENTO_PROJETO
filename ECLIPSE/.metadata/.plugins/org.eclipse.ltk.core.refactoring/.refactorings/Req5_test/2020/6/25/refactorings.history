@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;GetFile.java&apos; to &apos;testar_final/src/main/java/com.org.testar_final&apos;&#x0D;&#x0A;- Original project: &apos;Req5_test&apos;&#x0D;&#x0A;- Destination element: &apos;testar_final/src/main/java/com.org.testar_final&apos;&#x0D;&#x0A;- Original element: &apos;main.GetFile.java&apos;" description="Copy compilation unit" destination="=testar_final/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.org.testar_final" element1="/src=/optional=/true=/=/maven.pomderived=/true=/&lt;main{GetFile.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1592185473838" units="1" version="1.0"/>
+</session>

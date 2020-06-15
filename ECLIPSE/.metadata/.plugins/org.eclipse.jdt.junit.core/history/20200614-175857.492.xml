@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="testes" project="Selenium_Requisito2" tests="23" started="0" failures="0" errors="2" ignored="0">
+  <testsuite name="ES2_2019.Selenium_Requisito2.testes" incomplete="true">
+    <error>java.lang.IllegalStateException: The driver executable does not exist: D:\Utilizador\Downloads\ChromeDriver\chromedriver.exe&#13;
+	at com.google.common.base.Preconditions.checkState(Preconditions.java:585)&#13;
+	at org.openqa.selenium.remote.service.DriverService.checkExecutable(DriverService.java:146)&#13;
+	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:141)&#13;
+	at org.openqa.selenium.chrome.ChromeDriverService.access$000(ChromeDriverService.java:35)&#13;
+	at org.openqa.selenium.chrome.ChromeDriverService$Builder.findDefaultExecutable(ChromeDriverService.java:159)&#13;
+	at org.openqa.selenium.remote.service.DriverService$Builder.build(DriverService.java:355)&#13;
+	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:94)&#13;
+	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:123)&#13;
+	at ES2_2019.Selenium_Requisito2.testes.setUpBeforeClass(testes.java:93)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)&#13;
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)&#13;
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)&#13;
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)&#13;
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)&#13;
+	at org.junit.internal.runners.statements.RunBefores.invokeMethod(RunBefores.java:33)&#13;
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:24)&#13;
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)&#13;
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)&#13;
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:89)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:41)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:542)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:770)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:464)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)&#13;
+&#13;
+java.lang.NullPointerException&#13;
+	at ES2_2019.Selenium_Requisito2.testes.tearDownAfterClass(testes.java:145)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)&#13;
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)&#13;
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)&#13;
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)&#13;
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)&#13;
+	at org.junit.internal.runners.statements.RunAfters.invokeMethod(RunAfters.java:46)&#13;
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:33)&#13;
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)&#13;
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:89)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:41)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:542)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:770)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:464)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)&#13;
+&#13;
+</error>
+    <testcase name="testCovFAQSearch" classname="ES2_2019.Selenium_Requisito2.testes" incomplete="true"/>
+    <testcase name="testCovWikiSymptoms" classname="ES2_2019.Selenium_Requisito2.testes" incomplete="true"/>
+    <testcase name="testAbout" classname="ES2_2019.Selenium_Requisito2.testes" incomplete="true"/>
+    <testcase name="testLogin" classname="ES2_2019.Selenium_Requisito2.testes" incomplete="true"/>
+    <testcase name="testHome" classname="ES2_2019.Selenium_Requisito2.testes" incomplete="true"/>
+    <testcase name="testJoin" classname="ES2_2019.Selenium_Requisito2.testes" incomplete="true"/>
+    <testcase name="testCovWikiVaccine" classname="ES2_2019.Selenium_Requisito2.testes" incomplete="true"/>
+    <testcase name="testJoinForm" classname="ES2_2019.Selenium_Requisito2.testes" incomplete="true"/>
+    <testcase name="testSubmitLogin" classname="ES2_2019.Selenium_Requisito2.testes" incomplete="true"/>
+    <testcase name="testContactForm" classname="ES2_2019.Selenium_Requisito2.testes" incomplete="true"/>
+    <testcase name="testSiteTitle" classname="ES2_2019.Selenium_Requisito2.testes" incomplete="true"/>
+    <testcase name="testOpenWebsite" classname="ES2_2019.Selenium_Requisito2.testes" incomplete="true"/>
+    <testcase name="ztestRepository" classname="ES2_2019.Selenium_Requisito2.testes" incomplete="true"/>
+    <testcase name="testContact" classname="ES2_2019.Selenium_Requisito2.testes" incomplete="true"/>
+    <testcase name="testCovWiki" classname="ES2_2019.Selenium_Requisito2.testes" incomplete="true"/>
+    <testcase name="testCovWikiTreatment" classname="ES2_2019.Selenium_Requisito2.testes" incomplete="true"/>
+    <testcase name="testCovWikiSearch" classname="ES2_2019.Selenium_Requisito2.testes" incomplete="true"/>
+    <testcase name="testCovFAQ" classname="ES2_2019.Selenium_Requisito2.testes" incomplete="true"/>
+    <testcase name="testCovEvo" classname="ES2_2019.Selenium_Requisito2.testes" incomplete="true"/>
+    <testcase name="testCovQue" classname="ES2_2019.Selenium_Requisito2.testes" incomplete="true"/>
+    <testcase name="testCovSpr" classname="ES2_2019.Selenium_Requisito2.testes" incomplete="true"/>
+    <testcase name="ztestAnalytics" classname="ES2_2019.Selenium_Requisito2.testes" incomplete="true"/>
+    <testcase name="testCovSciDis" classname="ES2_2019.Selenium_Requisito2.testes" incomplete="true"/>
+  </testsuite>
+</testrun>

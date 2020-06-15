@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 3 elements from project &apos;covid-evolution-diff&apos;&#x0D;&#x0A;- Original project: &apos;covid-evolution-diff&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     CovidDiff.txt&#x0D;&#x0A;     TestesGeracaoII.txt&#x0D;&#x0A;     TestesGeracaoIII.txt" description="Delete elements" element1="CovidDiff.txt" element2="TestesGeracaoII.txt" element3="TestesGeracaoIII.txt" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="3" stamp="1592197365242" subPackages="false" version="1.0"/>
+</session>

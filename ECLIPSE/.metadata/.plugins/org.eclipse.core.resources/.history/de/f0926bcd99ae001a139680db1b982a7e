@@ -1,0 +1,18 @@
+package main;
+
+import org.xml.sax.SAXException;
+
+public class main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		GetFile gf = new GetFile();
+		try {
+			gf.cloneAndCopyFiles();
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}

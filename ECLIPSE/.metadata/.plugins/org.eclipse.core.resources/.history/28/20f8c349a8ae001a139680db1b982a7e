@@ -1,0 +1,57 @@
+package com.org.testar_final;
+
+import java.util.ArrayList;
+import java.util.Hashtable;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+    	ArrayList<String> regioes = new ArrayList<String>();
+    	
+		System.out.println(cgi_lib.Header());
+		
+		Hashtable form_data = cgi_lib.ReadParse(System.in);
+		
+		if(form_data.get("lisboa")!=null) {
+			regioes.add("Lisboa");
+		}
+		if(form_data.get("centro")!=null) {
+			regioes.add("Centro");
+		}
+		if(form_data.get("norte")!=null) {
+			regioes.add("Norte");
+		}
+		if(form_data.get("algarve")!=null) {
+			regioes.add("Algarve");
+		}
+		if(form_data.get("alentejo")!=null) {
+			regioes.add("Alentejo");
+		}
+		
+		int minInfecoes = (Integer)(form_data.get("infections_min"));
+        int maxInfecoes = (Integer)(form_data.get("infections_max"));
+
+        int minInternamentos = (Integer)(form_data.get("hospitalizations_min"));
+        int maxInternamentos = (Integer)(form_data.get("hospitalizations_max"));
+
+        int minTestes = (Integer)(form_data.get("testes_min"));
+        int maxTestes = (Integer)(form_data.get("testes_max"));
+        
+        String and1 = (String)(form_data.get("and1"));
+        String or1 = (String)(form_data.get("or1"));
+        String non1 = (String)(form_data.get("non1"));
+        
+		String regiao = (String)(form_data.get("region"));
+		
+		
+		
+		System.out.println("<hr>");
+		System.out.println(and1 + "   /    " + or1 +"   /    " + non1);
+		System.out.println("</hr>");
+    }
+}

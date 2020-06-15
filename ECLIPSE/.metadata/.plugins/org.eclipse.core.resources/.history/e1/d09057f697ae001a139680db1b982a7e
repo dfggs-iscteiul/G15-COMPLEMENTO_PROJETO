@@ -1,0 +1,3 @@
+module Req5_test {
+	requires org.eclipse.jgit;
+}

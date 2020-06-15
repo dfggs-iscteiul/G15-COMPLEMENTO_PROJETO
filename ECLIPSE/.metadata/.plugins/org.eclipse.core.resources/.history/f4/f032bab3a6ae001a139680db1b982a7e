@@ -1,0 +1,40 @@
+package com.org.testar_final;
+
+import java.util.ArrayList;
+import java.util.Hashtable;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+    	ArrayList<String> regioes = new ArrayList<String>();
+    	
+		System.out.println(cgi_lib.Header());
+		
+		Hashtable form_data = cgi_lib.ReadParse(System.in);
+		if(form_data.get("lisboa")!=null) {
+			regioes.add("Lisboa");
+		}
+		if(form_data.get("centro")!=null) {
+			regioes.add("Centro");
+		}
+		if(form_data.get("norte")!=null) {
+			regioes.add("Norte");
+		}
+		if(form_data.get("algarve")!=null) {
+			regioes.add("Algarve");
+		}
+		if(form_data.get("alentejo")!=null) {
+			regioes.add("Alentejo");
+		}
+
+		String regiao = (String)(form_data.get("region"));
+		System.out.println("<hr>");
+		System.out.println(regiao);
+		System.out.println("</hr>");
+    }
+}

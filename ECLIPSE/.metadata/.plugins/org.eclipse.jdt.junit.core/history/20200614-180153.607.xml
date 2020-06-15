@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="testes" project="Selenium_Requisito2" tests="23" started="23" failures="0" errors="0" ignored="0">
+  <testsuite name="ES2_2019.Selenium_Requisito2.testes" time="35.548">
+    <testcase name="testCovFAQSearch" classname="ES2_2019.Selenium_Requisito2.testes" time="0.998"/>
+    <testcase name="testCovWikiSymptoms" classname="ES2_2019.Selenium_Requisito2.testes" time="2.235"/>
+    <testcase name="testAbout" classname="ES2_2019.Selenium_Requisito2.testes" time="1.602"/>
+    <testcase name="testLogin" classname="ES2_2019.Selenium_Requisito2.testes" time="0.631"/>
+    <testcase name="testHome" classname="ES2_2019.Selenium_Requisito2.testes" time="0.623"/>
+    <testcase name="testJoin" classname="ES2_2019.Selenium_Requisito2.testes" time="0.797"/>
+    <testcase name="testCovWikiVaccine" classname="ES2_2019.Selenium_Requisito2.testes" time="1.624"/>
+    <testcase name="testJoinForm" classname="ES2_2019.Selenium_Requisito2.testes" time="2.768"/>
+    <testcase name="testSubmitLogin" classname="ES2_2019.Selenium_Requisito2.testes" time="3.975"/>
+    <testcase name="testContactForm" classname="ES2_2019.Selenium_Requisito2.testes" time="2.854"/>
+    <testcase name="testSiteTitle" classname="ES2_2019.Selenium_Requisito2.testes" time="0.688"/>
+    <testcase name="testOpenWebsite" classname="ES2_2019.Selenium_Requisito2.testes" time="0.725"/>
+    <testcase name="ztestRepository" classname="ES2_2019.Selenium_Requisito2.testes" time="0.648"/>
+    <testcase name="testContact" classname="ES2_2019.Selenium_Requisito2.testes" time="0.784"/>
+    <testcase name="testCovWiki" classname="ES2_2019.Selenium_Requisito2.testes" time="1.751"/>
+    <testcase name="testCovWikiTreatment" classname="ES2_2019.Selenium_Requisito2.testes" time="1.43"/>
+    <testcase name="testCovWikiSearch" classname="ES2_2019.Selenium_Requisito2.testes" time="1.429"/>
+    <testcase name="testCovFAQ" classname="ES2_2019.Selenium_Requisito2.testes" time="0.641"/>
+    <testcase name="testCovEvo" classname="ES2_2019.Selenium_Requisito2.testes" time="0.803"/>
+    <testcase name="testCovQue" classname="ES2_2019.Selenium_Requisito2.testes" time="0.633"/>
+    <testcase name="testCovSpr" classname="ES2_2019.Selenium_Requisito2.testes" time="0.685"/>
+    <testcase name="ztestAnalytics" classname="ES2_2019.Selenium_Requisito2.testes" time="1.413"/>
+    <testcase name="testCovSciDis" classname="ES2_2019.Selenium_Requisito2.testes" time="5.811"/>
+  </testsuite>
+</testrun>

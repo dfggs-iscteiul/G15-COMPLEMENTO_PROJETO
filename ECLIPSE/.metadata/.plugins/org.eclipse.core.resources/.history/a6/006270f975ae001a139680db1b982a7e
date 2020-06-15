@@ -1,0 +1,209 @@
+package covid_graph_spread.covid_graph_spread;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import org.eclipse.jgit.api.Git;
+import org.eclipse.jgit.api.errors.GitAPIException;
+import org.eclipse.jgit.api.errors.InvalidRemoteException;
+import org.eclipse.jgit.api.errors.TransportException;
+import org.eclipse.jgit.lib.ObjectId;
+import org.eclipse.jgit.lib.ObjectLoader;
+import org.eclipse.jgit.lib.Repository;
+import org.eclipse.jgit.revwalk.RevCommit;
+import org.eclipse.jgit.revwalk.RevWalk;
+import org.eclipse.jgit.treewalk.TreeWalk;
+
+
+public class App 
+{
+	
+private static Git git;
+private static  Repository rep;
+private static String[][] table;
+private static int size;
+
+    public static void main( String[] args )
+    {
+  
+    	connectGit();
+    	try {
+			createTable();
+		} catch (FileNotFoundException e) {
+		
+			e.printStackTrace();
+		}
+    	
+    }
+
+	private static void createTable() throws FileNotFoundException {
+		
+		String s = "http://visualdataweb.de/webvowl/#iri=https://github.com/vbasto-iscte/ESII1920/raw/";
+		int i = 0;
+		int j = 0;
+        PrintWriter pw = new PrintWriter (new File ("html table.html"));
+
+		pw.print("<html>" +
+			       "<body>" +
+			       "<table border ='1'>" +
+			       "<tr>" +
+			       "<td>File TimeStamp</td>" +
+			       "<td>File Name</td>" +
+			       "<td>File Tag</td>" +
+			       "<td>Tag Description</td>" +
+			       "<td>Spread Visualization Link</td>" +
+				"</tr>");
+		
+		while (i<3) {
+			j=0;
+			pw.print("<tr>");
+			while(j<4) {
+				pw.print("<td>");
+				pw.print(table[i][j]);
+				pw.print("</td>");
+				j++;
+			}
+			pw.print("<td>");
+			pw.print("<a href=" + s + table[i][4]+ " + > Link </a>");
+			pw.print("</tr>");
+			i++;
+		}
+		
+		pw.print("</table>" +
+				"</body>" +
+				"</html>"); 
+
+		pw.close(); 
+	}   
+
+
+	public static void deleteFolder(File folder) {
+	    File[] files = folder.listFiles();
+	    if(files!=null) { 
+	        for(File f: files) {
+	            if(f.isDirectory()) {
+	                deleteFolder(f);
+	            } else {
+	                f.delete();
+	            }
+	        }
+	    }
+	    folder.delete();
+	}
+	
+	
+	
+	private static void connectGit() {
+
+		//full path, mudar provavelmente
+		File folder = new File("C:/Users/Bruno/Documents/Projectos/covid-graph-spread/files");
+		deleteFolder(folder);
+		
+		
+			//full path, mudar provavelmente
+		try {
+			git =	Git.cloneRepository()
+					.setURI("https://github.com/vbasto-iscte/ESII1920")
+					.setDirectory(new File("C:/Users/Bruno/Documents/Projectos/covid-graph-spread/files")) 
+					.call();
+
+		} catch (InvalidRemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (TransportException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (GitAPIException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+	
+		rep = git.getRepository();	
+	
+		List<org.eclipse.jgit.lib.Ref> refTags = null;
+
+		try {
+			refTags = git.tagList().call();
+		} catch (GitAPIException e1) {
+			
+			e1.printStackTrace();
+		}
+		size = refTags.size();
+		table = new String[size][5];
+		
+		List<ObjectId> tags = new ArrayList<>();
+
+		
+		int i = 0;
+		for (org.eclipse.jgit.lib.Ref tag : refTags) {
+			tags.add(tag.getObjectId());
+		
+		}
+		
+		RevWalk walk = new RevWalk(rep);
+	
+		i = 0;
+		for (ObjectId tag : tags) {
+			
+			try {
+				RevCommit commit = walk.parseCommit(tag);
+				
+				ObjectId tree = commit.getTree();			
+				TreeWalk treewalk = new TreeWalk(rep);
+				treewalk.addTree(tree);
+				treewalk.setRecursive(true);
+			
+				while (treewalk.next()) {
+					if(treewalk.getPathString().equals("covid19spreading.rdf")){
+						
+						table[i][1] = "covid19spreading.rdf";
+						
+						int time = commit.getCommitTime();
+						
+						String dateAsText = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+		                          .format(new Date(time * 1000L));
+					
+						table[i][0] = dateAsText;
+						
+						table[i][3] = commit.getFullMessage();
+						
+						String postag ="";
+						for (org.eclipse.jgit.lib.Ref t : refTags) {
+							if (t.getObjectId().equals(tag)) {
+								String pretag = t.getName();
+								postag =pretag.replaceAll("refs/tags/", "");
+								table[i][2] = postag;
+							}
+						}
+						
+						ObjectId file = treewalk.getObjectId(0);
+						ObjectLoader loader = rep.open(file);
+						loader.copyTo(new FileOutputStream("C:/Users/Bruno/Documents/Projectos/covid-graph-spread/" + postag));
+					
+						String x = commit.getId().toString();
+						String k= x.split(" ")[1];
+						table[i][4] =  k + "/covid19spreading.rdf";
+					}
+				}
+
+				i++;
+				treewalk.close();
+
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+		}
+		walk.close();
+
+	}
+
+
+}

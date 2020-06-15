@@ -1,0 +1,326 @@
+package covid_graph_spread.covid_graph_spread;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import org.eclipse.jgit.api.Git;
+import org.eclipse.jgit.api.errors.GitAPIException;
+import org.eclipse.jgit.api.errors.InvalidRemoteException;
+import org.eclipse.jgit.api.errors.TransportException;
+import org.eclipse.jgit.lib.ObjectId;
+import org.eclipse.jgit.lib.ObjectLoader;
+import org.eclipse.jgit.lib.Repository;
+import org.eclipse.jgit.revwalk.RevCommit;
+import org.eclipse.jgit.revwalk.RevWalk;
+import org.eclipse.jgit.treewalk.TreeWalk;
+
+
+/**Class used to generate a table with the information related to the tagged commits
+ * 
+ * @author Bruno Silva
+ *
+ */
+public class App 
+{
+	
+/**
+ * Git object obtained when cloning the repository.
+ */
+private  Git git;
+/**
+ * Repository object corresponding to the git, which holds all objects and refs used for managing source code.
+ */
+private  Repository rep;
+/**
+ * table where the data necessary to display in the html table is stored.
+ */
+private  String[][] table;
+/**
+ * number of tags obtained, used for the row count.
+ */
+private  int size;
+
+
+  
+	/**Class Constructor
+	 * 
+	 */
+	public App(){
+	
+		connectGit();
+		
+	}
+
+	 /**Main method of the application.
+    *
+    * @param args array of String arguments.
+    */
+    public static void main( String[] args )
+    {
+		System.out.println(cgi_lib.Header());
+    	App app = new App();
+    	try {
+			app.createTable();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+   
+  	
+    }
+
+    
+	/**This procedure creates an html table, using the values stored in the String[][] table
+	 * and writes them into a File using a PrintWriter.
+	 * 
+	 * 
+	 * @throws FileNotFoundException If the file used for the PrintWriter can't be found.
+	 */
+	public void createTable() throws FileNotFoundException {
+		
+		String s = "http://visualdataweb.de/webvowl/#iri=https://github.com/vbasto-iscte/ESII1920/raw/";
+		int i = 0;
+		int j = 0;
+        //PrintWriter pw = new PrintWriter (new File ("./html/html_table.html"));
+
+		System.out.println("<html>" +
+			       "<body>" +
+			       "<table border ='1'>" +
+			       "<tr>" +
+			       "<td>File TimeStamp</td>" +
+			       "<td>File Name</td>" +
+			       "<td>File Tag</td>" +
+			       "<td>Tag Description</td>" +
+			       "<td>Spread Visualization Link</td>" +
+				"</tr>");
+		
+		while (i<3) {
+			j=0;
+			pw.print("<tr>");
+			while(j<4) {
+				pw.print("<td>");
+				pw.print(getTable()[i][j]);
+				pw.print("</td>");
+				j++;
+			}
+			pw.print("<td>");
+			pw.print("<a href=" + s + getTable()[i][4]+ " + > Link </a>");
+			pw.print("</tr>");
+			i++;
+		}
+		
+		pw.print("</table>" +
+				"</body>" +
+				"</html>"); 
+
+		pw.close(); 
+	}   
+
+
+	/**This procedure deletes all the files and folders in the Files directory if they already exist.
+	 * 
+	 * @param folder directory which will be emptied.
+	 */
+	public void deleteFolder(File folder) {
+	    File[] files = folder.listFiles();
+	    if(files!=null) { 
+	        for(File f: files) {
+	            if(f.isDirectory()) {
+	                deleteFolder(f);
+	            } else {
+	                f.delete();
+	            }
+	        }
+	    }
+	    folder.delete();
+	}
+	
+	
+	
+	/**This procedure clones the database into a local directory and gets the necessary information
+	 * to display in the html table.
+	 */
+	public void connectGit() {
+
+		//full path, mudar provavelmente
+		File folder = new File("./r4-files");
+		deleteFolder(folder);
+		
+		
+			//full path, mudar provavelmente
+		try {
+			setGit(Git.cloneRepository()
+					.setURI("https://github.com/vbasto-iscte/ESII1920")
+					.setDirectory(new File("./r4-files")) 
+					.call());
+
+		} catch (InvalidRemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (TransportException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (GitAPIException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+	
+		setRep(getGit().getRepository());	
+	
+		List<org.eclipse.jgit.lib.Ref> refTags = null;
+
+		try {
+			refTags = getGit().tagList().call();
+		} catch (GitAPIException e1) {
+			
+			e1.printStackTrace();
+		}
+		setSize(refTags.size());
+		setTable(new String[getSize()][5]);
+		
+		List<ObjectId> tags = new ArrayList<ObjectId>();
+
+		
+		int i = 0;
+		for (org.eclipse.jgit.lib.Ref tag : refTags) {
+			tags.add(tag.getObjectId());
+		
+		}
+		
+		RevWalk walk = new RevWalk(getRep());
+	
+		i = 0;
+		for (ObjectId tag : tags) {
+			
+			try {
+				RevCommit commit = walk.parseCommit(tag);
+				
+				ObjectId tree = commit.getTree();			
+				TreeWalk treewalk = new TreeWalk(getRep());
+				treewalk.addTree(tree);
+				treewalk.setRecursive(true);
+			
+				while (treewalk.next()) {
+					if(treewalk.getPathString().equals("covid19spreading.rdf")){
+						
+						getTable()[i][1] = "covid19spreading.rdf";
+						
+						int time = commit.getCommitTime();
+						
+						String dateAsText = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+		                          .format(new Date(time * 1000L));
+					
+						getTable()[i][0] = dateAsText;
+						
+						getTable()[i][3] = commit.getFullMessage();
+						
+						String postag ="";
+						for (org.eclipse.jgit.lib.Ref t : refTags) {
+							if (t.getObjectId().equals(tag)) {
+								String pretag = t.getName();
+								postag =pretag.replaceAll("refs/tags/", "");
+								getTable()[i][2] = postag;
+							}
+						}
+						
+						ObjectId file = treewalk.getObjectId(0);
+						ObjectLoader loader = getRep().open(file);
+						loader.copyTo(new FileOutputStream("../" + postag));
+					
+						String x = commit.getId().toString();
+						String k= x.split(" ")[1];
+						getTable()[i][4] =  k + "/covid19spreading.rdf";
+					}
+				}
+
+				i++;
+				treewalk.close();
+
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+		}
+		walk.close();
+	}
+
+
+	/**Getter for the attribute size.
+	 * 
+	 * @return  size attribute.
+	 */
+	public int getSize() {
+		return size;
+	}
+
+
+	/**Setter for the attribute size.
+	 * 
+	 * @param size new value for the attribute size.
+	 */
+	public void setSize(int size) {
+		this.size = size;
+	}
+
+
+	/**Getter for the attribute table.
+	 * 
+	 * @return table attribute.
+	 */
+	public String[][] getTable() {
+		return table;
+	}
+
+
+	/**Setter for the attribute table.
+	 * 
+	 * @param table new value for the attribute table.
+	 */
+	public void setTable(String[][] table) {
+		this.table = table;
+	}
+
+
+	/**Getter for the attribute rep.
+	 * 
+	 * @return rep attribute.
+	 */
+	public Repository getRep() {
+		return rep;
+	}
+
+
+	/**Setter for the attribute rep.
+	 * 
+	 * @param rep new value for the attribute rep.
+	 */
+	public void setRep(Repository rep) {
+		this.rep = rep;
+	}
+
+
+	/**Getter for the attribute git.
+	 * 
+	 * @return git attribute.
+	 */
+	public Git getGit() {
+		return git;
+	}
+
+
+	/**Setter for the attribute git.
+	 * 
+	 * @param git new value for the attribute git.
+	 */
+	public void setGit(Git git) {
+		this.git = git;
+	}
+
+}

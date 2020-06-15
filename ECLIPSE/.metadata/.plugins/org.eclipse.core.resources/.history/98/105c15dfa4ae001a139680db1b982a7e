@@ -1,0 +1,20 @@
+package com.org.testar_final;
+
+import java.util.Hashtable;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+		System.out.println(cgi_lib.Header());
+		Hashtable form_data = cgi_lib.ReadParse(System.in);
+		String regiao = (String)(form_data.get("regiao"));
+		System.out.println("<hr>");
+		System.out.println(regiao);
+		System.out.println("</hr>");
+    }
+}

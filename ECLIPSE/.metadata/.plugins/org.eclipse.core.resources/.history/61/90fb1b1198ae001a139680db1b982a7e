@@ -1,0 +1,41 @@
+package main;
+
+import org.eclipse.jgit.api.*;
+
+public class GetFile {
+
+    private  Git git;
+
+    public void cloneAndCopyFiles() {
+
+        try {
+            git = Git.cloneRepository().setURI("https://github.com/vbasto-iscte/ESII1920%22")
+                    .setDirectory(new File("C:/Utilizadores/35196/Documentos/Projeto/covid-graph-spread/file")).call();
+        } catch (GitAPIException e) {
+
+            e.printStackTrace();
+
+        }
+
+
+
+        File ficheiro = new File("C:/Utilizadores/35196/Documentos/Projeto/covid-graph-spread/file/covid19spreading.rdf");
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        DocumentBuilder db;
+
+        try {
+            db = dbf.newDocumentBuilder();
+            Document doc = db.parse(ficheiro);
+            doc.getDocumentElement().normalize();
+
+        } catch (ParserConfigurationException | SAXException | IOException e1) {
+            e1.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+
+        new GetFile().cloneAndCopyFiles();
+
+    }
+}

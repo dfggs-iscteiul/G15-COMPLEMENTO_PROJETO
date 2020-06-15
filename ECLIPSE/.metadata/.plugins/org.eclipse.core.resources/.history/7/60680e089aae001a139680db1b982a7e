@@ -1,0 +1,62 @@
+package main;
+
+import java.util.*;
+import org.xml.sax.SAXException;
+
+public class main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		GetFile gf = new GetFile();
+		Hashtable form_data = cgi_lib.ReadParse(System.in);
+		int minInfecoes = Integer.parseInt(form_data.get("infections_min"));
+        int maxInfecoes = Integer.parseInt(form_data.get("infections_max"));
+
+        int minInternamentos = Integer.parseInt(form_data.get("hospitalizations_min"));
+        int maxInternamentos = Integer.parseInt(form_data.get("hospitalizations_max"));
+
+        int minTestes = Integer.parseInt(form_data.get("testes_min"));
+        int maxTestes = Integer.parseInt(form_data.get("testes_max"));
+        
+        int operator1;
+        int operator2;
+
+        if (form_data.get("and_or_non_1").equals("and")) {
+
+            operator1 = 0;
+        }
+
+        else if (form_data.get("and_or_non_1").equals("or")) {
+
+            operator1 = 1;
+        }
+
+        else if (form_data.get("and_or_non_1").equals("non")) {
+
+            operator1 = 2;
+        }
+
+        if (form_data.get("and_or_non_2").equals("and")) {
+
+            operator2 = 0;
+        }
+
+        else if (form_data.get("and_or_non_2").equals("or")) {
+
+            operator2 = 1;
+        }
+
+        else if (form_data.get("and_or_non_2").equals("non")) {
+
+            operator2 = 2;
+        }
+		
+		try {
+			gf.cloneAndCopyFiles();
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}

@@ -1,0 +1,55 @@
+package com.org.testar_final;
+
+import java.util.ArrayList;
+import java.util.Hashtable;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+    	ArrayList<String> regioes = new ArrayList<String>();
+    	
+		System.out.println(cgi_lib.Header());
+		
+		Hashtable form_data = cgi_lib.ReadParse(System.in);
+		
+		if(form_data.get("lisboa")!=null) {
+			regioes.add("Lisboa");
+		}
+		if(form_data.get("centro")!=null) {
+			regioes.add("Centro");
+		}
+		if(form_data.get("norte")!=null) {
+			regioes.add("Norte");
+		}
+		if(form_data.get("algarve")!=null) {
+			regioes.add("Algarve");
+		}
+		if(form_data.get("alentejo")!=null) {
+			regioes.add("Alentejo");
+		}
+		
+        String and1 = (String)(form_data.get("and1"));
+        String or1 = (String)(form_data.get("or1"));
+        String non1 = (String)(form_data.get("non1"));
+        
+		String regiao = (String)(form_data.get("region"));
+		
+		String minInfecoes = (String)(form_data.get("infections_min"));
+		String maxInfecoes = (String)(form_data.get("infections_max"));
+
+		String minInternamentos = (String)(form_data.get("hospitalizations_min"));
+		String maxInternamentos = (String)(form_data.get("hospitalizations_max"));
+
+		String minTestes = (String)(form_data.get("tests_min"));
+		String maxTestes = (String)(form_data.get("tests_max"));
+		
+		System.out.println("<hr>");
+		System.out.println(minInfecoes);
+		System.out.println("</hr>");
+    }
+}

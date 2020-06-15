@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;cgi_lib.java&apos; to &apos;Req5_test/src/main&apos;&#x0D;&#x0A;- Original project: &apos;ESII-2020-2021-CGI&apos;&#x0D;&#x0A;- Destination element: &apos;Req5_test/src/main&apos;&#x0D;&#x0A;- Original element: &apos;cgi.cgi_lib.java&apos;" description="Copy compilation unit" destination="=Req5_test/src=/optional=/true=/=/maven.pomderived=/true=/&lt;main" element1="/src&lt;cgi{cgi_lib.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1592178619007" units="1" version="1.0"/>
+</session>
