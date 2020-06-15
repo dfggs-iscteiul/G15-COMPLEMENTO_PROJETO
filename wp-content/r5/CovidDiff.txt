@@ -1,0 +1,30 @@
+diff --git a/covid19spreading.rdf b/covid19spreading.rdf
+index 6aa58e5..b43f1a7 100644
+--- a/covid19spreading.rdf
++++ b/covid19spreading.rdf
+@@ -82,9 +82,9 @@
+ 
+     <owl:NamedIndividual rdf:about="&untitled-ontology-3;Alentejo">
+         <rdf:type rdf:resource="&untitled-ontology-3;Regiao"/>
+-        <Internamentos rdf:datatype="&xsd;integer">15</Internamentos>
+-        <Infecoes rdf:datatype="&xsd;integer">150</Infecoes>
+-        <Testes rdf:datatype="&xsd;integer">50</Testes>
++        <Internamentos rdf:datatype="&xsd;integer">266</Internamentos>
++        <Infecoes rdf:datatype="&xsd;integer">780</Infecoes>
++        <Testes rdf:datatype="&xsd;integer">560</Testes>
+     </owl:NamedIndividual>
+     
+ 
+@@ -93,9 +93,9 @@
+ 
+     <owl:NamedIndividual rdf:about="&untitled-ontology-3;Algarve">
+         <rdf:type rdf:resource="&untitled-ontology-3;Regiao"/>
+-        <Infecoes rdf:datatype="&xsd;integer">120</Infecoes>
+-        <Internamentos rdf:datatype="&xsd;integer">30</Internamentos>
+-        <Testes rdf:datatype="&xsd;integer">240</Testes>
++        <Infecoes rdf:datatype="&xsd;integer">820</Infecoes>
++        <Internamentos rdf:datatype="&xsd;integer">323</Internamentos>
++        <Testes rdf:datatype="&xsd;integer">580</Testes>
+     </owl:NamedIndividual>
+     
+ 
